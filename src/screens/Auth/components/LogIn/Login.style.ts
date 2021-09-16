@@ -84,4 +84,11 @@ const link = styled.a`
 	}
 `;
 
-export default { Conatiner, Input, SubmitBtn, Hr, link, SignupBtn };
+const ErrorText  = styled.p`
+color: red;
+font-size: 10px;
+text-align: left;
+align-self: flex-start;
+`;
+
+export default { Conatiner, Input, SubmitBtn, Hr, link, SignupBtn , ErrorText};

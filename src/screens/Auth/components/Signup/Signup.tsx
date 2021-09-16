@@ -9,7 +9,7 @@ import Input from "./components/Input/Input";
 import { GENDER } from "types/types";
 
 import Styles from "./Signup.style";
-import signupValidationSchema from "./validationSchema";
+import { signupValidationSchema } from "../../validationSchema";
 
 interface Props {
   onClocs: () => void;
@@ -25,6 +25,7 @@ interface IFormsValue {
 }
 export const Signup: FC<Props> = ({ onClocs, onSubmit }) => {
   const { t } = useTranslation();
+  const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
   const { values, handleSubmit, handleChange, setFieldValue, errors } =
     useFormik({
       initialValues: {
@@ -36,16 +37,19 @@ export const Signup: FC<Props> = ({ onClocs, onSubmit }) => {
         gender: "Male",
       },
       validationSchema: signupValidationSchema,
-      onSubmit: (values) => {
-        alert(JSON.stringify(values, null, 2));
-      },
+      validateOnChange: validateAfterSubmit,
+      onSubmit,
     });
   const { firstName, lastName, email, password, birthday, gender } = values;
 
-  console.log(errors);
+  const onHandleSubmit = (e?: React.FormEvent<HTMLFormElement> | undefined) => {
+    e?.preventDefault();
+    setValidateAfterSubmit(true);
+    handleSubmit();
+  };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={onHandleSubmit}>
       <Styles.Container>
         <Styles.Header>
           <Styles.Column>
@@ -59,14 +63,16 @@ export const Signup: FC<Props> = ({ onClocs, onSubmit }) => {
         <Styles.Hr />
         <Styles.Row>
           <Input
-            value={firstName}
+            id="firstName"
             name="firstName"
+            value={firstName}
             setValue={handleChange}
             width={47}
             placeholder={t("firstName")}
             error={errors.firstName}
           />
           <Input
+            id="lastName"
             name="lastName"
             value={lastName}
             setValue={handleChange}
@@ -76,6 +82,7 @@ export const Signup: FC<Props> = ({ onClocs, onSubmit }) => {
           />
         </Styles.Row>
         <Input
+          id="email"
           name="email"
           value={email}
           setValue={handleChange}
@@ -83,6 +90,7 @@ export const Signup: FC<Props> = ({ onClocs, onSubmit }) => {
           error={errors.email}
         />
         <Input
+          id="password"
           name="password"
           value={password}
           setValue={handleChange}

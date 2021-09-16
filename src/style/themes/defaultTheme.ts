@@ -10,6 +10,7 @@ export const colors = {
 	seaBlue: "rgba(33, 150, 243, 0.08)",
 	gray: "#f0f2f5",
 	lightGray: "#EEEEEE",
+	
 };
 
 export const msColors = {
