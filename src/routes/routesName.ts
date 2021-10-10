@@ -1,4 +1,6 @@
 export  enum RoutesName{
     AUTH = '/auth',
-    HOME = '/home',
+    ROOT = '/',
+    HOME = '/',
+    FIND_FRIENDS = '/find-friends',
 }

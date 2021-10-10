@@ -22,11 +22,10 @@ const Input = styled.input`
 	font-family: ${({ theme }) => theme.fontFamilies.SalsaRegular};
 	line-height: 16px;
 	vertical-align: middle;
-	font-size: 17px;
+	font-size: 1.06rem;
 	width: 100%;
 	border-radius: 9px;
 	height: 64px;
-	font-size: 17px;
 	padding: 14px 16px;
 	&:foucs {
 		border-color: #1877f2;
@@ -43,7 +42,7 @@ const SubmitBtn = styled.button`
 		font-family: ${({ theme }) => theme.fontFamilies.Ruda};
 		border-radius: 9px;
 		color: white;
-		font-size: 20px;
+		font-size: 1.25rem;
 		line-height: 48px;
 		padding: 0 16px;
 	}
@@ -59,7 +58,7 @@ const SignupBtn = styled.button`
 		font-family: ${({ theme }) => theme.fontFamilies.Ruda};
 		border-radius: 9px;
 		color: white;
-		font-size: 20px;
+		font-size: 1.25rem;
 		line-height: 48px;
 		padding: 0 16px;
 	}
@@ -86,7 +85,7 @@ const link = styled.a`
 
 const ErrorText  = styled.p`
 color: red;
-font-size: 10px;
+font-size: 0.625rem;
 text-align: left;
 align-self: flex-start;
 `;

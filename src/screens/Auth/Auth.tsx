@@ -20,16 +20,16 @@ const Auth = () => {
 
   const onSubmitLogin = async (data: any) => {
     const res = await login(data);
+    console.log(res);
+
     if (res.status === STATUS_REQ.SUCCESS) {
-      history.push(RoutesName.HOME);
+      history.push(RoutesName.ROOT);
     }
-    console.log({ res });
   };
 
   const onSubmitSignUp = async (data: any) => {
     const res = await signup(data);
-    if (res) history.push(RoutesName.HOME);
-    console.log({ res });
+    if (res) history.push(RoutesName.ROOT);
   };
 
   return (

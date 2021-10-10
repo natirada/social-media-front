@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useState } from "react";
+import React, { FC, useCallback, useContext, useState } from "react";
 import Dialog, {
   DialogActions,
   DialogContent,
@@ -14,10 +14,14 @@ import * as Styles from "./CreatePostModal.style";
 import { useTranslation } from "react-i18next";
 import { DragAndDropPhoto } from "components/DragAndDropPhoto/DragAndDropPhoto";
 import Text from "common/Text/Text";
+import { useMutation, useQueryClient } from "react-query";
+import { createPost } from "api/my-api";
+import Spinner from "common/Spinner/Spinner";
+import { UserContext } from "context/UserContext";
 
 interface Props {
   isVisable: boolean;
-  setIsVisable: () => void;
+  closeModal: () => void;
 }
 
 const postActions = [
@@ -35,33 +39,29 @@ const postActions = [
   },
 ];
 
-const CreatePostModal: FC<Props> = ({ isVisable, setIsVisable }) => {
+const CreatePostModal: FC<Props> = ({ isVisable, closeModal }) => {
   const { t } = useTranslation();
+  const [user] = useContext(UserContext);
   const [showDragAndDropImage, setShowDragAndDropImage] = useState(false);
   const [post, setPost] = useState("");
   const [image, setImage] = useState<null | Blob>(null);
-
+  const queryClient = useQueryClient();
   const closeDragAndDropImageCard = () => {
     setShowDragAndDropImage(false);
     setImage(null);
   };
 
-  const onSubmit = async () => {
-    const bodyFormData = new FormData();
-    image && bodyFormData.append("image", image);
-    bodyFormData.append("content", post);
-    bodyFormData.append("userId", "6133a20a256618239412b5f0");
-    console.log({ post, image });
-    const res = await httpService.post(ApiRequests.POST, bodyFormData, {
-      "Content-Type": "multipart/form-data",
-    });
-
-    console.log({ res });
-  };
+  const mutation = useMutation(createPost, {
+    onSuccess: () => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries("Posts");
+      closeModal();
+    },
+  });
 
   return (
     <Styles.Container>
-      <Dialog isVisable={isVisable} handleClose={setIsVisable}>
+      <Dialog isVisable={isVisable} handleClose={closeModal}>
         <DialogTitle>{t("createPost")}</DialogTitle>
         <DialogContent>
           <Styles.BodyDialog>
@@ -82,6 +82,7 @@ const CreatePostModal: FC<Props> = ({ isVisable, setIsVisable }) => {
                 {postActions.map((a) => (
                   <Styles.PostActionBtn
                     onClick={() => setShowDragAndDropImage(true)}
+                    whileHover={{ y: -8 }}
                   >
                     {a.icon}
                   </Styles.PostActionBtn>
@@ -91,11 +92,15 @@ const CreatePostModal: FC<Props> = ({ isVisable, setIsVisable }) => {
           </Styles.BodyDialog>
         </DialogContent>
         <DialogActions>
-          <Styles.BtnSubmit disabled={!post && !image} onClick={onSubmit}>
+          <Styles.BtnSubmit
+            disabled={!post && !image}
+            onClick={() => mutation.mutate({ image, post, userId: user?._id })}
+          >
             <Text fontWeight={400}>POST</Text>
           </Styles.BtnSubmit>
         </DialogActions>
       </Dialog>
+      {mutation.isLoading && <Spinner />}
     </Styles.Container>
   );
 };

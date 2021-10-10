@@ -23,8 +23,6 @@ const CreatePost = (props: Props) => {
   const { t } = useTranslation();
   const [isModalVisable, setIsModalVisable] = useToggle(false);
 
-  console.log({ isModalVisable });
-
   return (
     <Styles.Container>
       <BaseCard width="100%" height="123px">
@@ -58,7 +56,7 @@ const CreatePost = (props: Props) => {
       </BaseCard>
       <CreatePostModal
         isVisable={isModalVisable}
-        setIsVisable={() => setIsModalVisable(false)}
+        closeModal={() => setIsModalVisable(false)}
       />
     </Styles.Container>
   );

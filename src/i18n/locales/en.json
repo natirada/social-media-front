@@ -33,5 +33,8 @@
 	"felling": "Felling",
 	"activity": "activity",
 	"createPost": "Create Post",
-	"addToYourPost": "Add to Your Post"
+	"addToYourPost": "Add to Your Post",
+	"like": "Like",
+	"comment": "Comment",
+	"share": "Share"
 }

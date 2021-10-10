@@ -10,6 +10,10 @@ export const colors = {
 	seaBlue: "rgba(33, 150, 243, 0.08)",
 	gray: "#f0f2f5",
 	lightGray: "#EEEEEE",
+	darkGray: "#DADDE1",
+	darkGray1: "#373737",
+	primaryBackground: '#1877F2',
+	red: '#FA383E'
 	
 };
 
@@ -40,11 +44,24 @@ export const breakPoints = {
 	mobileS: `(max-width: ${deviceSizes.mobileS}px)`,
 };
 
+export const padding = {
+	small: '0.4rem',
+	large: '1rem',
+}
+
+export const margin = {
+	small: '0.4rem',
+	large: '1rem',
+}
+
 const defaultTheme: DefaultTheme = {
 	colors,
 	msColors,
 	fontFamilies,
 	breakPoints,
+	padding,
+	margin
+
 };
 
 export default defaultTheme;

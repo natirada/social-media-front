@@ -1,17 +1,22 @@
 import React from "react";
-import CreatePost from "./components/CreatePost/CreatePost";
-import Posts from "./components/Posts/Posts";
-import { Stories } from "./components/Stories/Stories";
+import { Route, Switch, useHistory } from "react-router";
+import { RoutesName } from "routes/routesName";
+import Findfriends from "./components/FindFriends/FindFriends";
+import Home from "./components/Home/Home";
 import * as Styles from "./Main.style";
 
 interface Props {}
 
 const Main = (props: Props) => {
+  const history = useHistory();
+  console.log({ history });
+
   return (
     <Styles.Container>
-      <Stories />
-      <CreatePost />
-      <Posts />
+      <Switch>
+        <Route path={RoutesName.FIND_FRIENDS} component={Findfriends} />
+        <Route path={RoutesName.ROOT} component={Home} />
+      </Switch>
     </Styles.Container>
   );
 };

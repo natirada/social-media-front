@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -10,7 +11,7 @@ display: flex;
 flex-direction: column;
 overflow-y: auto;
 justify-content: space-between;
-width: 30vw;
+width: 100%;
 min-height: 428px;
 `
 export const TextArea = styled.textarea`
@@ -21,6 +22,7 @@ resize: none;
 font-size: 1rem;
 margin: 5px 0;
 border: none;
+outline: none;
 `
 
 export const AddToPostContainer = styled.div`
@@ -34,15 +36,13 @@ border: 1px solid gray;
 padding: 1rem;
 background-color: transparent;
 `
-export const PostActionBtn = styled.button`
+export const PostActionBtn = styled(motion.button)`
 border: none;
 width: 40px;
 height: 40px;
 border-radius: 20px;
 margin: 4px;
-&:hover {
-    transform: translateY(-5px);
-}
+
 `
 
 export const BtnSubmit = styled.button<{

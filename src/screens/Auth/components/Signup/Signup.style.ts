@@ -4,7 +4,7 @@ const Container = styled.div`
 	background-color: ${({ theme }) => theme.colors.white};
 	box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
 	width: 360px;
-	height: 55vh;
+	height: max(450px,55vh);
 	border-radius: 8px;
 	display: flex;
 	flex-direction: column;
@@ -21,7 +21,7 @@ const Title = styled.p`
 	color: #1c1e21;
 	font-family: ${({ theme }) => theme.fontFamilies.Rubik};
 	font-weight: 500;
-	font-size: 32px;
+	font-size: 2rem;
 	line-height: 38px;
 	margin-bottom: 0;
 	text-align-last: left;
@@ -38,6 +38,7 @@ const CloseBtn = styled.button`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	all: inherit;
 `;
 const Hr = styled.hr`
 	border: 1px solid #dadde1;
@@ -58,7 +59,7 @@ const SignupBtn = styled.button`
 		font-family: ${({ theme }) => theme.fontFamilies.Rubik};
 		border-radius: 9px;
 		color: ${({ theme }) => theme.colors.white};
-		font-size: 20px;
+		font-size: 1.25rem;
 		align-self: center;
 	&:hover {
 		background-color: #42b72a;

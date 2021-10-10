@@ -15,8 +15,10 @@ const Styles = {
     display: flex;
     position: relative;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background-color: ${({ theme }) => theme.colors.white};
-    min-width: 350px;
+    width: max(380px, 30vw);
     min-height: 100px;
     border-radius: 8px;
     border: 1px solid gray;
@@ -64,11 +66,13 @@ const Styles = {
   `,
   DialogContent: styled.div`
     padding: 0 0.3rem;
+    width: 100%;
   `,
 
   DialogActions: styled.div`
     padding: 0 0.3rem;
     display: flex;
+    width: 100%;
     justify-content: flex-end;
   `,
 };
@@ -79,7 +83,6 @@ const Dialog: FC<Props> = ({ isVisable, handleClose, children }) => {
         <Styles.CloseBtn onClick={handleClose}>
           <VscChromeClose width={50} />
         </Styles.CloseBtn>
-
         {children}
       </Styles.Container>
     </BaseModal>

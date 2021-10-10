@@ -1,23 +1,24 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC, ReactNode, HTMLProps } from "react";
 import styled from "styled-components";
 import { IFontFamilys } from "style/styled";
 import { fontFamilies } from "style/themes/defaultTheme";
 
-interface Props {
-  children: ReactNode;
+type TextAlignType = "right" | "left" | "center";
+
+interface Props extends HTMLProps<HTMLParagraphElement> {
   fontFamily?: keyof typeof fontFamilies;
   fontSize?: string;
   fontWeight?: number;
+  textAlign?: TextAlignType;
+  children: ReactNode;
 }
 
-const TextStyle = styled.p<{
-  fontFamily: keyof typeof fontFamilies;
-  fontSize: string;
-  fontWeight: number;
-}>`
+const TextStyle = styled.p<Props>`
   font-family: ${({ fontFamily }) => fontFamily};
   font-size: ${({ fontSize }) => fontSize};
   font-weight: ${({ fontWeight }) => fontWeight};
+  text-align: ${({ textAlign }) => textAlign};
+  ${({ color }) => color && `color: ${color}`};
 `;
 
 const Text: FC<Props> = ({
@@ -25,12 +26,18 @@ const Text: FC<Props> = ({
   fontFamily = "Rubik",
   fontSize = "1rem",
   fontWeight = 400,
+  textAlign = "center",
+  color = "black",
+  ...props
 }) => {
   return (
     <TextStyle
       fontFamily={fontFamily}
       fontSize={fontSize}
       fontWeight={fontWeight}
+      textAlign={textAlign}
+      color={color}
+      // {...props}
     >
       {children}
     </TextStyle>

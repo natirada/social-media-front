@@ -5,7 +5,8 @@ import { isDev } from 'utiles/utilis';
 const DEBUG_URL = 'http://localhost:4005';
 const PROD_URL = '';
 
-axios.defaults.baseURL =  isDev()  ? DEBUG_URL : PROD_URL;
+export const baseURL = isDev()  ? DEBUG_URL : PROD_URL;
+axios.defaults.baseURL = baseURL;
 
 enum httpServiceTypes {
   GET = 'get',

@@ -1,8 +1,12 @@
+import { deviceSizes } from "style/themes/defaultTheme";
 import styled from "styled-components";
 
 export const Container = styled.div`
-background-color: green;
 height: 100%;
-width: 100%;
+min-width: 100%;
 grid-area: contact;
+@media (max-width: ${deviceSizes.mobileL}px) {
+  display: none;
+       
+}
 `

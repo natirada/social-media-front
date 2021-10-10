@@ -4,17 +4,18 @@ import styled, {css} from "styled-components";
 
 export const Container = styled.div`
 height: 100vh;
+overflow-y: auto;
 width: 100%;
 background-color: ${({theme}) => theme.colors.gray};
 display: grid;
 grid-template-columns: repeat(7, 1fr);
-grid-template-rows: 1fr 0.8fr;
+grid-template-rows: 0.1fr 0.9fr;
 grid-template-areas: "header header header header header header header"
-           "contact contact main main main menu menu";
+           "drawer drawer main main main contact contact";
 
 @media (max-width: ${deviceSizes.tablet}px) {
     grid-template-areas: "header header header header header header header"
-           "contact contact main main main main main";
+           "main main main main main contact contact";
 }
 
 @media (max-width: ${deviceSizes.mobileL}px) {

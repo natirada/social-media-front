@@ -47,9 +47,6 @@ const Birthday: FC<Props> = ({ date, setDate }) => {
 
   const onClickDays = (e: ChangeEvent<HTMLSelectElement>) => {
     date.setDate(Number(e.target.value));
-    console.log(e.target.value);
-    console.log(date);
-
     setDate(new Date(date));
   };
 
