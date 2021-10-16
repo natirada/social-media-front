@@ -5,7 +5,7 @@ import { Stories } from "./components/Stories/Stories";
 
 interface Props {}
 
-const Home: FC = ({}) => {
+const Home: FC = () => {
   return (
     <>
       <Stories />

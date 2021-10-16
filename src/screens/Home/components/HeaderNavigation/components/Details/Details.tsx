@@ -20,7 +20,7 @@ enum MODAL_OPTION {
 
 interface Props {}
 
-const Details: FC = ({}) => {
+const Details: FC = () => {
   const [user] = useContext(UserContext);
   const [currentModal, setCurrentModal] = useState<null | MODAL_OPTION>(null);
   const [notificationCounter, setNotificationCounter] = useState(0);
@@ -67,7 +67,7 @@ const Details: FC = ({}) => {
           onClick={() => setCurrentModal(MODAL_OPTION.NOTIFICATIONS)}
         >
           <Styles.NotificationCounter
-            animate={{ scale: !!notificationCounter ? 1 : 0 }}
+            animate={{ scale: notificationCounter ? 1 : 0 }}
           >
             <Text fontSize="0.8rem" color="white">
               {notificationCounter}

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React,{ FC } from "react";
 import BaseCard from "common/Card/BaseCard";
 import * as Styles from "./Post.style";
 import { Profile } from "components/Profile/Profile";

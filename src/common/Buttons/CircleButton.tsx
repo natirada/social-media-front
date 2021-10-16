@@ -19,7 +19,7 @@ export const Container = styled(motion.button)`
   }
 `;
 
-const CircleButton: FC<Props> = ({ children, onClick, className }) => {
+const CircleButton: FC<Props> = ({ children, onClick, className = 'className'}) => {
   return (
     <Container
       className={className}

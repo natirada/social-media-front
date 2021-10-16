@@ -4,7 +4,7 @@ import * as Styles from "./Spinner.Style";
 
 interface Props {}
 
-const Spinner: FC = ({}) => {
+const Spinner: FC = () => {
   const controls = useAnimation();
 
   useEffect(() => {

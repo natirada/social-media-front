@@ -10,12 +10,12 @@ import { sendFriendship } from "api/my-api";
 
 interface Props {}
 
-const Findfriends: FC = ({}) => {
+const Findfriends: FC = () => {
   const [people, setPeople] = useState<IUser[]>([]);
   const mutaion = useMutation(sendFriendship);
 
   useEffect(() => {
-    getUserByName("N").then((res) => setPeople(res.users));
+    getUserByName("R").then((res) => setPeople(res.users));
   }, []);
 
   return (
@@ -27,6 +27,7 @@ const Findfriends: FC = ({}) => {
           </Text>
           {people.map((p) => (
             <People
+              key={p._id}
               {...p}
               onClickFrindship={(toUser) => mutaion.mutate({ toUser })}
             />

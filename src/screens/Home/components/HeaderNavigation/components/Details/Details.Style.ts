@@ -54,5 +54,4 @@ export const Modal = styled(motion.div)`
   position: absolute;
   top: 100%;
   right: 0;
-  border: 1px solid red;
 `;

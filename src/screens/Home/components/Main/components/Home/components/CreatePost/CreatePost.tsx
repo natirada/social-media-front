@@ -1,3 +1,4 @@
+import React, {FC} from 'react';
 import BaseCard from "common/Card/BaseCard";
 import * as Styles from "./CreatePost.style";
 import prifilePlaceholder from "assets/images/profile-placeholder.jpeg";
@@ -15,11 +16,11 @@ import Dialog, {
 import CreatePostModal from "./CreatePostModal/CreatePostModal";
 import { Profile } from "components/Profile/Profile";
 
-interface Props {}
+// interface Props {}
 
 const actions = ["IoVideocam", "BsImages", "FaRegSmileBeam"];
 
-const CreatePost = (props: Props) => {
+const CreatePost: FC = () => {
   const { t } = useTranslation();
   const [isModalVisable, setIsModalVisable] = useToggle(false);
 

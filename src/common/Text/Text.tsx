@@ -1,9 +1,9 @@
-import React, { FC, ReactNode, HTMLProps } from "react";
-import styled from "styled-components";
-import { IFontFamilys } from "style/styled";
-import { fontFamilies } from "style/themes/defaultTheme";
+import React, { FC, ReactNode, HTMLProps } from 'react';
+import styled from 'styled-components';
+import { IFontFamilys } from 'style/styled';
+import { fontFamilies } from 'style/themes/defaultTheme';
 
-type TextAlignType = "right" | "left" | "center";
+type TextAlignType = 'right' | 'left' | 'center';
 
 interface Props extends HTMLProps<HTMLParagraphElement> {
   fontFamily?: keyof typeof fontFamilies;
@@ -11,6 +11,7 @@ interface Props extends HTMLProps<HTMLParagraphElement> {
   fontWeight?: number;
   textAlign?: TextAlignType;
   children: ReactNode;
+  display?: string;
 }
 
 const TextStyle = styled.p<Props>`
@@ -19,15 +20,17 @@ const TextStyle = styled.p<Props>`
   font-weight: ${({ fontWeight }) => fontWeight};
   text-align: ${({ textAlign }) => textAlign};
   ${({ color }) => color && `color: ${color}`};
+  ${({ display }) => display && `display: ${display}`};
 `;
 
 const Text: FC<Props> = ({
   children,
-  fontFamily = "Rubik",
-  fontSize = "1rem",
+  fontFamily = 'Rubik',
+  fontSize = '1rem',
   fontWeight = 400,
-  textAlign = "center",
-  color = "black",
+  textAlign = 'center',
+  color = 'black',
+  display = '',
   ...props
 }) => {
   return (
@@ -37,6 +40,7 @@ const Text: FC<Props> = ({
       fontWeight={fontWeight}
       textAlign={textAlign}
       color={color}
+      display={display}
       // {...props}
     >
       {children}

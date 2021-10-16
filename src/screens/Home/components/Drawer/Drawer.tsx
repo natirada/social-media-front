@@ -1,11 +1,11 @@
 import { Profile } from "components/Profile/Profile";
-import { FC } from "react";
+import React,{ FC } from "react";
 import * as Styles from "./Drawer.style";
 import { FaAngleDown } from "react-icons/fa";
 import { RoutesName } from "routes/routesName";
 import { useHistory } from "react-router";
 
-interface Props {}
+// interface Props {}
 
 interface IMenu {
   id: number;
@@ -77,7 +77,7 @@ const menu: IMenu[] = [
   },
 ];
 
-const Drawer: FC<Props> = (props) => {
+const Drawer: FC = (props) => {
   const history = useHistory();
   const onPressItem = (item: IMenu) => history.push(item.linkTo);
 

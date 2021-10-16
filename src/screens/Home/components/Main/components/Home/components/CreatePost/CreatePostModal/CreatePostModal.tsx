@@ -79,8 +79,9 @@ const CreatePostModal: FC<Props> = ({ isVisable, closeModal }) => {
             <Styles.AddToPostContainer>
               <Text fontWeight={500}>{t("addToYourPost")}</Text>
               <div>
-                {postActions.map((a) => (
+                {postActions.map((a,i) => (
                   <Styles.PostActionBtn
+                    key={i}
                     onClick={() => setShowDragAndDropImage(true)}
                     whileHover={{ y: -8 }}
                   >

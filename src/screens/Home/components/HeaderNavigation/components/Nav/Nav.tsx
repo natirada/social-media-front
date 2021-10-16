@@ -8,7 +8,7 @@ import { useTheme } from "styled-components";
 
 interface Props {}
 
-const Nav: FC = ({}) => {
+const Nav: FC = () => {
   const [currTab, setCurrTab] = useState(0);
   const { colors } = useTheme();
   return (

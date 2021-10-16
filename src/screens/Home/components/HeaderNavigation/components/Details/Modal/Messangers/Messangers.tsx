@@ -3,7 +3,7 @@ import * as Styles from "./Messangers.Style";
 
 interface Props {}
 
-const Messangers: FC = ({}) => {
+const Messangers: FC = () => {
   return <Styles.Container>Messangers</Styles.Container>;
 };
 

@@ -1,13 +1,9 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC,  useState } from "react";
 import * as Styles from "./Search.Style";
 import { facebookUrlImage } from "assets";
 import { BiArrowBack } from "react-icons/bi";
 import { AiOutlineSearch } from "react-icons/ai";
-import { motion } from "framer-motion";
 import Text from "common/Text/Text";
-import { useQuery } from "react-query";
-import Http from "api/service.http";
-import { ApiRequests } from "api/api.endpoints";
 import useUsersByName from "hooks/useUsersByName";
 import { IUser } from "context/UserContext";
 import { useHistory } from "react-router";
@@ -15,28 +11,9 @@ import { RoutesName } from "routes/routesName";
 
 interface Props {}
 
-const dammyDate = [
-  {
-    name: "Nati",
-  },
-  {
-    name: "Ran",
-  },
-  {
-    name: "Moshe",
-  },
-  {
-    name: "Nati",
-  },
-  {
-    name: "Ran",
-  },
-  {
-    name: "Moshe",
-  },
-];
 
-const Search: FC = ({}) => {
+
+const Search: FC = () => {
   const history = useHistory();
   const [isInputFoucs, setisInputFoucs] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -91,7 +68,7 @@ const Search: FC = ({}) => {
           </div>
         ) : (
           users.map((user: IUser) => (
-            <Styles.User onClick={() => onPressUser(user)}>
+            <Styles.User key={user._id} onClick={() => onPressUser(user)}>
               <Styles.Icon>
                 <AiOutlineSearch size={20} />
               </Styles.Icon>

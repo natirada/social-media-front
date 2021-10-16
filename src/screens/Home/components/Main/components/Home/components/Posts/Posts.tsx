@@ -4,16 +4,16 @@ import * as Styles from "./Posts.style";
 import Spinner from "common/Spinner/Spinner";
 import usePostQuery from "./usePostQuery";
 
-interface Props {}
+// interface Props {}
 
-const Posts = (props: Props) => {
+const Posts = () => {
   const { posts = [], isLoading } = usePostQuery();
 
   return (
     <Styles.Container>
       {isLoading && <Spinner />}
-      {posts.map((p: IPost) => (
-        <Post {...p} />
+      {posts.map((p: IPost, i: number) => (
+        <Post key={i} {...p} />
       ))}
     </Styles.Container>
   );

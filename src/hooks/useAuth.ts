@@ -1,11 +1,14 @@
 import { useCallback, useEffect, useState, useContext } from "react";
 import { ApiRequests } from "api/api.endpoints";
 import httpService,{ setAxiosHeader } from "api/service.http";
-import { UserContext ,ContextType} from "context/UserContext";
+import { UserContext ,initialUserState} from "context/UserContext";
 import { STATUS_REQ } from "types/types";
+import { useHistory } from "react-router";
+import { RoutesName } from "routes/routesName";
 
 const useAuth = () => {
     const [accessToken, setAccessToken] = useState<string| null>(null);
+    const history = useHistory();
     const [_, setUser] = useContext(UserContext)
     
 
@@ -43,14 +46,23 @@ const useAuth = () => {
         },
         [],
     )
+    const logout = useCallback(() => {
+        setUser(initialUserState)
+        localStorage.setItem('token', '');
+        localStorage.setItem('user', '');
+        history.push(RoutesName.ROOT)
+    },[]);
 
     const setUserData = (user: any, accessToken: string) =>  {
         setAccessToken(accessToken)
         setUser(user)
         localStorage.setItem('token', accessToken);
         localStorage.setItem('user', JSON.stringify(user));
+
     }
-    return {login, signup}
+
+
+    return {login, signup, logout}
 };
 
 

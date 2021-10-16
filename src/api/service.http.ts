@@ -1,11 +1,10 @@
 import axios from 'axios';
 import { isDev } from 'utiles/utilis';
 
-
 const DEBUG_URL = 'http://localhost:4005';
 const PROD_URL = '';
 
-export const baseURL = isDev()  ? DEBUG_URL : PROD_URL;
+export const baseURL = isDev() ? DEBUG_URL : PROD_URL;
 axios.defaults.baseURL = baseURL;
 
 enum httpServiceTypes {
@@ -23,18 +22,14 @@ const httpRequest = async (
   query: null | object = null,
   headers?: object
 ) => {
-  try {
-    const result = await axios({
-      url: endpoint,
-      method,
-      data,
-      params: query,
-      headers
-    });
-    return result.data;
-  } catch (err) {
-    throw err;
-  }
+  const result = await axios({
+    url: endpoint,
+    method,
+    data,
+    params: query,
+    headers,
+  });
+  return result.data;
 };
 
 // eslint-disable-next-line
@@ -46,7 +41,7 @@ export default {
     return httpRequest(endpoint, httpServiceTypes.PUT, data);
   },
   post(endpoint: string, data?: object, headers?: object) {
-    return httpRequest(endpoint, httpServiceTypes.POST, data,null, headers);
+    return httpRequest(endpoint, httpServiceTypes.POST, data, null, headers);
   },
   delete(endpoint: string, data: object) {
     return httpRequest(endpoint, httpServiceTypes.DELETE, data);
