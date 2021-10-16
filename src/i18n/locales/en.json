@@ -25,5 +25,16 @@
 	"Sep": "Sep",
 	"Oct": "Oct",
 	"Nov": "Nov",
-	"Dec": "Dec"
+	"Dec": "Dec",
+	"whatDoUThink": "What's on your mind",
+	"liveVideos": "Live Video",
+	"photo": "Photo",
+	"video": "Video",
+	"felling": "Felling",
+	"activity": "activity",
+	"createPost": "Create Post",
+	"addToYourPost": "Add to Your Post",
+	"like": "Like",
+	"comment": "Comment",
+	"share": "Share"
 }

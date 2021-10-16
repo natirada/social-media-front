@@ -1,4 +1,4 @@
-import React, { FC, ChangeEvent, useState, ChangeEventHandler } from "react";
+import React, { FC, ChangeEvent} from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { getDaysInMonth, monthsName } from "../../../../../../utiles/dates";
@@ -47,9 +47,6 @@ const Birthday: FC<Props> = ({ date, setDate }) => {
 
   const onClickDays = (e: ChangeEvent<HTMLSelectElement>) => {
     date.setDate(Number(e.target.value));
-    console.log(e.target.value);
-    console.log(date);
-
     setDate(new Date(date));
   };
 
